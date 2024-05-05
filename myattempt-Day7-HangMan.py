@@ -11,11 +11,11 @@ def return_word_from_list(word):
         word1+=letter
     return word1
 
-words=["ROBIN","MAN","SHOW","DAMN","FAM","PARADOX","GIGGLEPUFF","TIMID","RAUNCHY"]
+words=["HOH","HEHE","A","LOT","OF","WORDS"]
 word = random.choice(words)
 list1=[]
 for i in range(0,len(word)):
-    list1.append("_")
+    list1.append("_ ")
 print_word_from_list(list1)
 
 lives=5
@@ -27,7 +27,11 @@ while(lives>=0):
     guess=input("\nWhat letter do you enter? ").upper()
     if (word.find(guess)>=0):
         print(f"'{guess}' is in the word")
-        list1[word.find(guess)]=guess
+        y=0
+        while y<len(word):
+            if word[y]==guess:
+                list1[y]=guess
+            y+=1
         print_word_from_list(list1)
     else:
         print("You lose a life")
