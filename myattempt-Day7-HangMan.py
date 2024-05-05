@@ -22,9 +22,9 @@ lives=5
 while(lives>=0):
     temp=return_word_from_list(list1)
     if(temp.find("_")==-1):
-            print("You Win!")
+            print("\nYou Win!")
             break
-    guess=input("What letter do you enter? ").upper()
+    guess=input("\nWhat letter do you enter? ").upper()
     if (word.find(guess)>=0):
         print(f"'{guess}' is in the word")
         list1[word.find(guess)]=guess
@@ -34,7 +34,7 @@ while(lives>=0):
         print_word_from_list(list1)
         lives-=1
     if lives==0:
-        print("Game Over!")
+        print("\nGame Over!")
         break
     
             
