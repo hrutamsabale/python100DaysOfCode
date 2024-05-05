@@ -39,6 +39,7 @@ while(lives>=0):
         lives-=1
     if lives==0:
         print("\nGame Over!")
+        print(f"The word was {word}")
         break
     
             
