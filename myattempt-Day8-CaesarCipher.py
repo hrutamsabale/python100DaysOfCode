@@ -7,6 +7,7 @@ def print_word_from_list(word):
     print(word1)
 
 def caeser_cipher_encoder(message,shift):
+    shift=shift%26
     list1=list(message.lower())
     list2=[] #indices of symbols
     list5=[] #symbols
@@ -29,6 +30,7 @@ def caeser_cipher_encoder(message,shift):
     print_word_from_list(list4)
     
 def caeser_cipher_decoder(message,shift):
+    shift=shift%26
     list1=list(message.lower())
     list2=[] #indices of symbols
     list5=[] #symbols
@@ -72,5 +74,4 @@ while(True):
         break
 
      
-
 
