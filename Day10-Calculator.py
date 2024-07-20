@@ -1,44 +1,32 @@
-def add(a,b):
-  return a+b
-def sub(a,b):
-  return a-b
-def mul(a,b):
-  return a*b
-def div(a,b):
-  return round(a/b,2)
+from replit import clear
+def add(num1,num2):
+  return num1+num2
+def sub(num1,num2):
+  return num1-num2
+def mul(num1,num2):
+  return num1*num2
+def div(num1,num2):
+  return num1/num2
 operations={
   "+":add,
   "-":sub,
   "*":mul,
-  "/":div
+  "/":div,
 }
-
-to_continue=True
-while to_continue:
-  x=float(input("\nEnter first number: "))
-  for operation in operations:
-    print(operation)
-  ean=False#ean=Enter Another Number
-  while not ean:    
-    operation=input("What operation do you wish to perform? ")
-    y=float(input("Enter second number: "))
-    result=0
-    operation_function=operations[operation]
-    result=operation_function(x,y)
-    print(f"\n{x}{operation}{y} is {result}")
+def calculator():
+  x=float(input("Enter 1st number: "))
+  continue_with_answer=True
+  while continue_with_answer:
+    for operation in operations:
+      print(operation)
+    selected_symbol=input("Choose an operation from above: ")
+    y=float(input("Enter next number: "))
+    selected_operation=operations[selected_symbol]
+    result=selected_operation(x,y)
+    print(f"{x}{selected_symbol}{y}={result}")
     x=result
-    choice1=input(f"Do you wish to continue calculations with {result}? ").lower()
-    if choice1=="no":
-      ean=True
-      choice2=input(f"Do you wish to exit the program? ").lower()
-      if choice2=="yes":
-        print("\nTHANK YOU")
-        to_continue=False
-      else:
-        print("""---------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------""")
-    
-
-
-
-                  
+    choice=input(f"Type 'y' to continue with {result} or type 'n' to reset: ").lower()
+    if choice=="n":
+      clear()
+      calculator()
+calculator()
