@@ -1,38 +1,37 @@
-def add(a,b):
-  return a+b
-def sub(a,b):
-  return a-b
-def mul(a,b):
-  return a*b
-def div(a,b):
-  return round(a/b,2)
-while True:
-  x=float(input("\nEnter first number: "))
-  ean=False
-  while not ean:
-    operation=input("""+
--
-*
-/
-What operation do you wish to perform? """)
-    y=float(input("Enter second number: "))
-    result=0
-    if operation=="+":
-      result=add(x,y)
-    elif operation=="-":
-      result=sub(x,y)
-    elif operation=="*":
-      result=mul(x,y)
-    elif operation=="/":
-      result=div(x,y)
-    print(f"\n{x}{operation}{y} is {result}")
-    x=result
-    choice=input("\nDo you wish to continue with this answer? ").lower()
-    if choice=="no":
-      print("-------------------------------------------------------------------------------------------")
-      ean=True
-    
-
-
-
-                  
+from replit import clear
+def add(num1,num2):
+  return num1+num2
+def sub(num1,num2):
+  return num1-num2
+def mul(num1,num2):
+  return num1*num2
+def div(num1,num2):
+  return num1/num2
+operations={
+  "+":add,
+  "-":sub,
+  "*":mul,
+  "/":div,
+}
+to_continue=True
+while to_continue:
+  x=float(input("Enter 1st number: "))
+  for operation in operations:
+    print(operation)
+  reset=False
+  while not reset:
+    operation=input("Choose an operation: ")
+    chosen_operation=operations[operation]
+    y=float(input("Enter 2nd number: "))
+    result=chosen_operation(x,y)
+    print(f"{x}{operation}{y}={result}")
+    choice=input(f"\nType 'y' to continue with {result}, 'n' to reset, 'e' to exit: ").lower()
+    if choice=="e":
+      print("\nEXITING................")
+      reset=True
+      to_continue=False
+    elif choice=="n":
+      clear()
+      reset=True
+    elif choice=="y":
+      x=result
