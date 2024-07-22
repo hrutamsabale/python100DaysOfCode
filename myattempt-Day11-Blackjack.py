@@ -11,8 +11,14 @@ while to_play:
   clear()
   usercards=[choice(cards),choice(cards)]
   userscore=sum(usercards)
+  if 11 in usercards and userscore>21:
+    usercards[usercards.index(11)]=1
+    userscore=sum(usercards)
   compcards=[choice(cards),choice(cards)]
   compscore=sum(compcards)
+  if 11 in compcards and compscore>21:
+    compcards[compcards.index(11)]=1
+    compscore=sum(compcards)
   print(f"Your cards: {usercards}. Your current score: {userscore}")
   print(f"Computer's first card: {compcards[0]}")
   if userscore>21 and compscore>21:
