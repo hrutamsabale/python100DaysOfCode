@@ -46,7 +46,8 @@ while to_play:
           usercards.append(choice(cards))
           userscore=sum(usercards)
           if 11 in usercards and (userscore>21):
-            userscore-=10
+            usercards[usercards.index(11)]=1
+            userscore=sum(usercards)
           print(f"Your cards: {usercards}. Your current score: {userscore}")
         else:
           to_draw=False
@@ -59,7 +60,8 @@ while to_play:
         compcards.append(choice(cards))
         compscore=sum(compcards)
         if 11 in compcards and compscore>21:
-          compscore-=10
+          compcards[compcards.index(11)]=1
+          compscore=sum(compcards)
       if compscore>21:
         print(f"You Win. Computer's score exceeds 21.")
         print(f"Computer's cards: {compcards}. Computer's score: {compscore}")
