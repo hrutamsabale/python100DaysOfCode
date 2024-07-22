@@ -1,7 +1,7 @@
 from replit import clear
 from random import choice
 def wanna_exit():
-  if input("Do you want to exit? ")=="yes":
+  if input("Do you wish to exit? ").lower()=="yes":
     return False
   else:
     return True
@@ -27,46 +27,45 @@ while to_play:
     print(f"You Win. Computer's score exceeds 21.")
     print(f"Computer's cards: {compcards}. Computer's score: {compscore}")
     to_play=wanna_exit()
-  elif userscore==21 and compscore==21:
-    print(f"It's a tie. Both user's and computer's score got a Blackjack")
+  elif compscore==21:
+    print(f"You Lose. Computer got a Blackjack.")
     print(f"Computer's cards: {compcards}. Computer's score: {compscore}")
     to_play=wanna_exit()
   elif userscore==21:
-    print(f"You Win. You got a Blackjack.")
-    print(f"Computer's cards: {compcards}. Computer's score: {compscore}")
-    to_play=wanna_exit()
-  elif compscore==21:
-    print(f"You Lose. Computer got a Blackjack.")
+    print(f"You Win. You got a Blackjack")
     print(f"Computer's cards: {compcards}. Computer's score: {compscore}")
     to_play=wanna_exit()
   else:
     to_draw=True
     while to_draw:
-      if userscore<21:
-        draw=input("Wanna Draw a card? ").lower()
-        if draw=="no":
-          to_draw=False
-        else:
+      if userscore>=21:
+        to_draw=False
+      else:
+        draw=input("Wanna draw a card? ").lower()
+        if draw=="yes":
           usercards.append(choice(cards))
           userscore=sum(usercards)
+          if 11 in usercards and (userscore>21):
+            userscore-=10
           print(f"Your cards: {usercards}. Your current score: {userscore}")
-      else:
-        to_draw=False
+        else:
+          to_draw=False
     if userscore>21:
-      print(f"You Lose. Your score exceeds 21.")
+      print(f"You Lose. Your score exceeded 21")
       print(f"Computer's cards: {compcards}. Computer's score: {compscore}")
       to_play=wanna_exit()
     else:
       while compscore<17:
         compcards.append(choice(cards))
         compscore=sum(compcards)
-      print(compcards)
+        if 11 in compcards and compscore>21:
+          compscore-=10
       if compscore>21:
         print(f"You Win. Computer's score exceeds 21.")
         print(f"Computer's cards: {compcards}. Computer's score: {compscore}")
         to_play=wanna_exit()
       elif userscore==compscore:
-        print(f"It's a tie")
+        print(f"It's a tie.")
         print(f"Computer's cards: {compcards}. Computer's score: {compscore}")
         to_play=wanna_exit()
       elif userscore>compscore:
@@ -74,9 +73,11 @@ while to_play:
         print(f"Computer's cards: {compcards}. Computer's score: {compscore}")
         to_play=wanna_exit()
       elif compscore>userscore:
-        print("You Lose!")
+        print(f"You Lose")
         print(f"Computer's cards: {compcards}. Computer's score: {compscore}")
         to_play=wanna_exit()
+        
+        
       
     
-  
+    
