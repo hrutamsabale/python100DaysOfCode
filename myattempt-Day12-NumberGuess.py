@@ -1,6 +1,5 @@
 import random
 chosen_number=random.randint(1,100)
-print(chosen_number)
 def difficulty():
   difficulty=input("Choose a difficulty, 'Hard' or 'Easy': ").lower()
   if difficulty=='easy':
