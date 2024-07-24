@@ -1,4 +1,4 @@
-import art, game_data, random 
+import art, game_data, random, replit
 #game_data available at: https://replit.com/@appbrewery/higher-lower-start#game_data.py
 #art available at: https://replit.com/@appbrewery/higher-lower-start#art.py
 def compare_followers(personA,personB):
@@ -30,17 +30,17 @@ def game():
     higher=compare_followers(celebA,celebB)
     choice=input("Who has higher followers? 'A' or 'B': ").lower()
     if (choice=="a" and higher==celebA['name']) or (choice=="b" and higher==celebB['name']):
-      print(f"You guessed it right! {celebA['name']} has {celebA['follower_count']} million followers while {celebB['name']} has {celebB['follower_count']} million followers")
+      replit.clear()
+      print(art.logo)
+      print(f"You guessed it right!")
       score+=1
       celebA=celebB
       celebB=select_celeb(some_list)
     else:
-      print(f"Wrong guess! {celebA['name']} has {celebA['follower_count']} million followers while {celebB['name']} has {celebB['follower_count']} million followers")
+      print(f"Wrong guess!")
       print(f"\nGAME OVER.")
       to_continue=False
     print(f"Your score: {score}")
 some_list=[]
 game()
-  
-  
 
