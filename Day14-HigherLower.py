@@ -28,15 +28,15 @@ def game():
     print(art.vs)
     print(f"B:", celeb_description(celebB))
     higher=compare_followers(celebA,celebB)
-    choice=input("Who has higher followers? 'A' or 'B': ").lower()
-    if (choice=="a" and higher==celebA['name']) or (choice=="b" and higher==celebB['name']):
-      replit.clear()
-      print(art.logo)
+    choice=input("\nWho has higher followers? 'A' or 'B': ").lower()
+    replit.clear()
+    print(art.logo)
+    if (choice=="a" and higher==celebA['name']) or (choice=="b" and higher==celebB['name']):      
       print(f"You guessed it right!")
       score+=1
       celebA=celebB
       celebB=select_celeb(some_list)
-    else:
+    else:      
       print(f"Wrong guess!")
       print(f"\nGAME OVER.")
       to_continue=False
