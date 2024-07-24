@@ -25,6 +25,7 @@ def game():
   to_continue=True
   while to_continue:
     print(f"\nA:", celeb_description(celebA))
+    print(art.vs)
     print(f"B:", celeb_description(celebB))
     higher=compare_followers(celebA,celebB)
     choice=input("Who has higher followers? 'A' or 'B': ").lower()
