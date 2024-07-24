@@ -1,17 +1,26 @@
-import art, game_data, random
+import art, game_data, random 
+#game_data available at: https://replit.com/@appbrewery/higher-lower-start#game_data.py
+#art available at: https://replit.com/@appbrewery/higher-lower-start#art.py
 def compare_followers(personA,personB):
   if personA["follower_count"]>personB["follower_count"]:
     return personA["name"]
   else:
     return personB["name"]
-def select_celeb():
-  return game_data.data[random.randint(0,len(game_data.data)-1)]
+def select_celeb(already_selected):
+  index=random.randint(0,len(game_data.data)-1)
+  while True:
+    if index in already_selected:
+      index=random.randint(0,len(game_data.data)-1)
+    else:
+      global some_list
+      some_list.append(index)
+      return game_data.data[index]
 def celeb_description(person):
   return (f"{person['name']}, a {person['description']}, from {person['country']}")
 def game():
   print(art.logo)
-  celebA=select_celeb()
-  celebB=select_celeb()
+  celebA=select_celeb(some_list)
+  celebB=select_celeb(some_list)
   score=0
   to_continue=True
   while to_continue:
@@ -23,12 +32,13 @@ def game():
       print(f"You guessed it right! {celebA['name']} has {celebA['follower_count']} million followers while {celebB['name']} has {celebB['follower_count']} million followers")
       score+=1
       celebA=celebB
-      celebB=select_celeb()
+      celebB=select_celeb(some_list)
     else:
       print(f"Wrong guess! {celebA['name']} has {celebA['follower_count']} million followers while {celebB['name']} has {celebB['follower_count']} million followers")
       print(f"\nGAME OVER.")
       to_continue=False
     print(f"Your score: {score}")
+some_list=[]
 game()
   
   
