@@ -38,8 +38,12 @@ coins = {
     "Quarter":0.25
 }
 current_resources = resources
-while True:
+to_continue = True
+while to_continue:
     coffee_wanted = input("What coffee would you like? 'Espresso', 'Latte' or 'Cappuccino' : ").lower()
+    if coffee_wanted=="off":
+        to_continue = False
+        continue
     if coffee_wanted=="report":
         print(f"The are the current resources: ")
         for key in current_resources:
